@@ -11,6 +11,7 @@ var express = require('express');
 var less = require('less-middleware');
 var path = require('path');
 var router = express.Router();
+var NpmImport = require('less-plugin-npm-import');
 
 /* Prepare browserify bundles */
 
@@ -38,7 +39,8 @@ var lessOptions = {
 	render: {
 		modifyVars: {
 			reactSelectPath: JSON.stringify(reactSelectPath)
-		}
+		},
+		plugins: [new NpmImport()]
 	}
 };
 

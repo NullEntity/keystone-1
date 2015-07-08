@@ -43,6 +43,7 @@
     "keystone-utils": "~0.2.0",
     "knox": "~0.9.2",
     "less-middleware": "~2.0.1",
+    "less-plugin-npm-import": "^2.1.0",
     "mandrill-api": "~1.0.45",
     "marked": "~0.3.3",
     "method-override": "~2.3.3",
@@ -91,28 +92,28 @@
     ]
   },
   "browserify-shim": {
-    "tinymce": "global:tinymce",
-    "jquery": "global:$",
     "codemirror": "global:CodeMirror",
-    "underscore": "global:_",
+    "jquery": "global:$",
+    "moment": "global.moment",
     "pikaday": "global.Pikaday",
-    "moment": "global.moment"
+    "tinymce": "global:tinymce",
+    "underscore": "global:_"
   },
   "author": "Jed Watson",
   "homepage": "http://keystonejs.com/",
   "license": "MIT",
   "keywords": [
-    "express",
-    "web",
+    "admin",
     "app",
     "cms",
-    "admin",
+    "express",
+    "forms",
     "framework",
-    "mongoose",
     "gui",
+    "mongoose",
     "site",
-    "website",
-    "forms"
+    "web",
+    "website"
   ],
   "readmeFilename": "README.md",
   "gitHead": "ef3fd612285315ea8e12f68da4c8d6031e2c7fe7",
@@ -122,13 +123,13 @@
   "scripts": {
     "build": "NODE_ENV=production gulp build-packages",
     "build-dev": "gulp build-packages",
+    "clean": "rimraf ./coverage",
+    "lint": "eslint .",
+    "posttest-cov": "if [ -n \"$CODECLIMATE_REPO_TOKEN\" ]; then codeclimate < coverage/lcov.info; fi",
+    "pretest-cov": "npm run clean",
     "release": "gulp release",
     "test": "mocha",
-    "lint": "eslint .",
-    "pretest-cov": "npm run clean",
-    "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha",
-    "posttest-cov": "if [ -n \"$CODECLIMATE_REPO_TOKEN\" ]; then codeclimate < coverage/lcov.info; fi",
-    "clean": "rimraf ./coverage"
+    "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha"
   },
   "engines": {
     "node": ">= 0.10.28",
